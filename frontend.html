@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHire | Hire for Skills, Not Certificates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4361ee;
+            --primary-purple: #7209b7;
+            --primary-teal: #2ec4b6;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #7209b7 50%, #2ec4b6 100%);
+            --light-gradient: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.1) 50%, rgba(46, 196, 182, 0.1) 100%);
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: var(--gradient);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background: var(--light-gradient);
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .illustration-container {
+            width: 100%;
+            height: 400px;
+            background: var(--light-gradient);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-container::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--gradient);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            opacity: 0.3;
+        }
+
+        .illustration-container::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--gradient);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            opacity: 0.3;
+        }
+
+        .hero-icon {
+            font-size: 8rem;
+            color: var(--primary-blue);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Authentication Page */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 40px 0;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 480px;
+            padding: 48px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .auth-header h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .role-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .role-option {
+            padding: 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .role-option:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .role-option.active {
+            border-color: var(--primary-blue);
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .role-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .social-btn {
+            padding: 14px;
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-300);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background-color: var(--gray-50);
+        }
+
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 24px 0;
+            color: var(--gray-500);
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--gray-300);
+            z-index: 1;
+        }
+
+        .divider span {
+            background-color: white;
+            padding: 0 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        /* Dashboard Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            padding: 40px 0;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            margin-right: 40px;
+        }
+
+        .sidebar-nav {
+            background: white;
+            border-radius: var(--radius);
+            padding: 24px 0;
+            box-shadow: var(--shadow-card);
+        }
+
+        .nav-item {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--gray-700);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(67, 97, 238, 0.05);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+
+        .dashboard-content {
+            flex-grow: 1;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.2rem;
+            color: var(--gray-900);
+        }
+
+        /* Skill Scorecard */
+        .scorecard-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            padding: 28px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--light-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .skill-percentage {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--gray-200);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: var(--gradient);
+        }
+
+        /* Assessment List */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--gray-900);
+        }
+
+        .assessment-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .assessment-card {
+            padding: 24px;
+        }
+
+        .assessment-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .status-active {
+            background-color: rgba(46, 196, 182, 0.1);
+            color: var(--primary-teal);
+        }
+
+        .status-completed {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .assessment-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .assessment-details {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Recruiter Dashboard */
+        .recruiter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 10px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            background-color: white;
+            font-size: 0.95rem;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-label {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gray-300);
+            border-radius: 34px;
+            transition: var(--transition);
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        input:checked + .toggle-slider {
+            background: var(--gradient);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        .analytics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .analytics-card {
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        .analytics-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .candidate-table {
+            width: 100%;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+        }
+
+        .candidate-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .candidate-table th {
+            background-color: var(--gray-50);
+            padding: 18px 24px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .candidate-table td {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .candidate-table tr:hover {
+            background-color: var(--gray-50);
+        }
+
+        .skill-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-bar {
+            flex-grow: 1;
+            height: 6px;
+            background-color: var(--gray-200);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        /* Assessment Interface */
+        .assessment-interface {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 40px;
+        }
+
+        .assessment-header {
+            padding: 20px 32px;
+            background: var(--light-gradient);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .timer {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .anti-cheat-banner {
+            background-color: #fef3c7;
+            color: #92400e;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #fde68a;
+        }
+
+        .assessment-body {
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .question-panel {
+            padding-right: 32px;
+            border-right: 1px solid var(--gray-200);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--light-gradient);
+            color: var(--primary-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .code-editor {
+            background-color: var(--gray-900);
+            border-radius: var(--radius);
+            overflow: hidden;
+            color: white;
+        }
+
+        .editor-header {
+            background-color: #1a1a1a;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .editor-language {
+            font-weight: 600;
+            color: #f3f4f6;
+        }
+
+        .editor-body {
+            padding: 20px;
+            min-height: 300px;
+            font-family: monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* AI Interview Page */
+        .interview-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 32px;
+        }
+
+        .video-panel {
+            background-color: var(--gray-900);
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .recording-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .recording-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .video-feed {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+        }
+
+        .video-controls {
+            background-color: #1a1a1a;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .control-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--gray-700);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background-color: var(--gray-600);
+        }
+
+        .control-btn.primary {
+            background: var(--gradient);
+        }
+
+        .questions-panel {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+        }
+
+        .questions-header {
+            padding: 24px;
+            background: var(--light-gradient);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .questions-list {
+            padding: 24px;
+            max-height: 452px;
+            overflow-y: auto;
+        }
+
+        .question-item {
+            padding: 20px;
+            border-radius: var(--radius);
+            background-color: var(--gray-50);
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .question-item.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-left-color: var(--primary-purple);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--gray-900);
+            color: white;
+            padding: 60px 0 40px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-800);
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .dashboard-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+                padding: 0;
+            }
+            
+            .nav-item {
+                white-space: nowrap;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            
+            .nav-item.active {
+                border-left: none;
+                border-bottom-color: var(--primary-blue);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .auth-card {
+                padding: 32px 24px;
+            }
+            
+            .assessment-body {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .question-panel {
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+                padding-bottom: 30px;
+            }
+            
+            .interview-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-panel {
+                height: 400px;
+            }
+            
+            .candidate-table {
+                overflow-x: auto;
+            }
+            
+            .candidate-table table {
+                min-width: 700px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .role-selection {
+                grid-template-columns: 1fr;
+            }
+            
+            .scorecard-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .assessment-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .analytics-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="showPage('landing')">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                EduHire
+            </a>
+            
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="showPage('landing')">Home</a>
+                <a href="#" class="nav-link" onclick="showPage('candidate-dashboard')">For Candidates</a>
+                <a href="#" class="nav-link" onclick="showPage('recruiter-dashboard')">For Recruiters</a>
+                <a href="#" class="nav-link">How It Works</a>
+                <a href="#" class="nav-link">Pricing</a>
+            </div>
+            
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="showPage('auth')">Log In</button>
+                <button class="btn btn-primary" onclick="showPage('auth')">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Landing Page -->
+    <section id="landing" class="page active">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Hire for Skills, Not Certificates</h1>
+                        <p>EduHire connects recruiters with candidates based on real-time skill assessments, eliminating resume bias and focusing on actual capabilities. Merit-based hiring powered by AI-driven evaluations.</p>
+                        
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="showPage('auth'); selectRole('candidate')">
+                                <i class="fas fa-user-graduate"></i>
+                                I'm a Candidate
+                            </button>
+                            <button class="btn btn-outline" onclick="showPage('auth'); selectRole('recruiter')">
+                                <i class="fas fa-briefcase"></i>
+                                I'm a Recruiter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-illustration">
+                        <div class="illustration-container">
+                            <i class="fas fa-laptop-code hero-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container" style="padding: 100px 0;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 60px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">How EduHire Works</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div class="card glass-card" style="text-align: center; padding: 40px 20px;">
+                    <div style="width: 70px; height: 70px; background: var(--light-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--primary-blue); font-size: 1.8rem;">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 style="margin-bottom: 15px;">Skill Assessment</h3>
+                    <p style="color: var(--gray-600);">Candidates complete real-time assessments tailored to job requirements.</p>
+                </div>
+                
+                <div class="card glass-card" style="text-align: center; padding: 40px 20px;">
+                    <div style="width: 70px; height: 70px; background: var(--light-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--primary-purple); font-size: 1.8rem;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 style="margin-bottom: 15px;">AI Evaluation</h3>
+                    <p style="color: var(--gray-600);">Our AI analyzes performance, providing unbiased skill scores to recruiters.</p>
+                </div>
+                
+                <div class="card glass-card" style="text-align: center; padding: 40px 20px;">
+                    <div style="width: 70px; height: 70px; background: var(--light-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--primary-teal); font-size: 1.8rem;">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 style="margin-bottom: 15px;">Smart Matching</h3>
+                    <p style="color: var(--gray-600);">Recruiters connect with top-performing candidates based on skill scores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Page -->
+    <section id="auth" class="page">
+        <div class="auth-container">
+            <div class="auth-card card">
+                <div class="auth-header">
+                    <h2>Welcome to EduHire</h2>
+                    <p>Select your role to continue</p>
+                </div>
+                
+                <div class="role-selection">
+                    <div class="role-option" id="candidate-option" onclick="selectRole('candidate')">
+                        <div class="role-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4>Candidate</h4>
+                        <p style="font-size: 0.9rem; color: var(--gray-600);">Looking for jobs</p>
+                    </div>
+                    
+                    <div class="role-option" id="recruiter-option" onclick="selectRole('recruiter')">
+                        <div class="role-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Recruiter</h4>
+                        <p style="font-size: 0.9rem; color: var(--gray-600);">Hiring talent</p>
+                    </div>
+                </div>
+                
+                <div class="social-login">
+                    <button class="social-btn">
+                        <i class="fab fa-linkedin" style="color: #0A66C2;"></i>
+                        Continue with LinkedIn
+                    </button>
+                    
+                    <button class="social-btn">
+                        <i class="fab fa-github" style="color: #333;"></i>
+                        Continue with GitHub
+                    </button>
+                </div>
+                
+                <div class="divider">
+                    <span>Or continue with email</span>
+                </div>
+                
+                <form id="auth-form">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" class="form-input" id="email" placeholder="you@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" class="form-input" id="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="role-confirm" id="role-confirm-label">I am a Candidate</label>
+                        <input type="text" class="form-input" id="role-confirm" readonly>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Continue
+                    </button>
+                </form>
+                
+                <p style="text-align: center; margin-top: 24px; color: var(--gray-600);">
+                    By continuing, you agree to our <a href="#" style="color: var(--primary-blue);">Terms</a> and <a href="#" style="color: var(--primary-blue);">Privacy Policy</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Candidate Dashboard -->
+    <section id="candidate-dashboard" class="page">
+        <div class="container dashboard-container">
+            <div class="sidebar">
+                <div class="sidebar-nav card">
+                    <a href="#" class="nav-item active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-clipboard-list"></i>
+                        Assessments
+                    </a>
+                    <a href="#" class="nav-item" onclick="showPage('ai-interview')">
+                        <i class="fas fa-robot"></i>
+                        AI Interview
+                    </a>
+                    <a href="#" class="nav-item" onclick="showPage('assessment-interface')">
+                        <i class="fas fa-code"></i>
+                        Coding Challenge
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="nav-item" onclick="showPage('landing')">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>Candidate Dashboard</h1>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span style="color: var(--gray-600);">Welcome back, <strong>Alex Johnson</strong></span>
+                        <div style="width: 40px; height: 40px; background: var(--gradient); border-radius: 50%;"></div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Skill Scorecard</h2>
+                <div class="scorecard-container">
+                    <div class="skill-card card">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-percentage">87%</div>
+                        </div>
+                        <h3>Python Development</h3>
+                        <p>Data structures, algorithms, Django, Flask</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 87%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card card">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="skill-percentage">92%</div>
+                        </div>
+                        <h3>Logic & Problem Solving</h3>
+                        <p>Analytical thinking, algorithm design, debugging</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card card">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="skill-percentage">78%</div>
+                        </div>
+                        <h3>Communication</h3>
+                        <p>Technical documentation, team collaboration</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Active Assessments</h2>
+                <div class="assessment-list">
+                    <div class="assessment-card card">
+                        <div class="assessment-status status-active">
+                            <i class="fas fa-circle" style="font-size: 0.7rem;"></i> Active
+                        </div>
+                        <h3 class="assessment-title">Senior Python Developer</h3>
+                        <p>TechCorp Inc. • Full-time • Remote</p>
+                        <div class="assessment-details">
+                            <span>Due: 2 days</span>
+                            <span>4 tasks remaining</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assessment-card card">
+                        <div class="assessment-status status-active">
+                            <i class="fas fa-circle" style="font-size: 0.7rem;"></i> Active
+                        </div>
+                        <h3 class="assessment-title">Backend Engineer</h3>
+                        <p>StartupXYZ • Contract • Hybrid</p>
+                        <div class="assessment-details">
+                            <span>Due: 5 days</span>
+                            <span>3 tasks remaining</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assessment-card card">
+                        <div class="assessment-status status-completed">
+                            <i class="fas fa-check-circle"></i> Completed
+                        </div>
+                        <h3 class="assessment-title">Data Scientist</h3>
+                        <p>DataWorks LLC • Full-time • On-site</p>
+                        <div class="assessment-details">
+                            <span>Score: 94%</span>
+                            <span>Rank: Top 5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruiter Dashboard -->
+    <section id="recruiter-dashboard" class="page">
+        <div class="container dashboard-container">
+            <div class="sidebar">
+                <div class="sidebar-nav card">
+                    <a href="#" class="nav-item active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-plus-circle"></i>
+                        Post Job
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-clipboard-list"></i>
+                        Assessments
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-users"></i>
+                        Candidates
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-chart-bar"></i>
+                        Analytics
+                    </a>
+                    <a href="#" class="nav-item" onclick="showPage('landing')">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="recruiter-header">
+                    <h1>Recruiter Dashboard</h1>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Create Assessment
+                    </button>
+                </div>
+                
+                <div class="filters">
+                    <select class="filter-select">
+                        <option>All Roles</option>
+                        <option>Python Developer</option>
+                        <option>Data Scientist</option>
+                        <option>Frontend Developer</option>
+                    </select>
+                    
+                    <select class="filter-select">
+                        <option>All Experience Levels</option>
+                        <option>Entry Level</option>
+                        <option>Mid Level</option>
+                        <option>Senior Level</option>
+                    </select>
+                    
+                    <div class="toggle-switch">
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-label">Ignore Education Background</span>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Analytics Overview</h2>
+                <div class="analytics-cards">
+                    <div class="analytics-card card">
+                        <div class="analytics-value">142</div>
+                        <p>Exams Taken</p>
+                    </div>
+                    
+                    <div class="analytics-card card">
+                        <div class="analytics-value">87</div>
+                        <p>Active Candidates</p>
+                    </div>
+                    
+                    <div class="analytics-card card">
+                        <div class="analytics-value">23</div>
+                        <p>Top Performers</p>
+                    </div>
+                    
+                    <div class="analytics-card card">
+                        <div class="analytics-value">4.8</div>
+                        <p>Avg. Rating</p>
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Candidate Rankings</h2>
+                <div class="candidate-table card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Candidate</th>
+                                <th>Python</th>
+                                <th>Logic</th>
+                                <th>Communication</th>
+                                <th>Overall Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 600;">Alex Johnson</td>
+                                <td class="skill-cell">
+                                    <span>87%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 87%;"></div>
+                                    </div>
+                                </td>
+                                <td class="skill-cell">
+                                    <span>92%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 92%;"></div>
+                                    </div>
+                                </td>
+                                <td class="skill-cell">
+                                    <span>78%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 78%;"></div>
+                                    </div>
+                                </td>
+                                <td><strong>86%</strong></td>
+                                <td><span style="color: var(--primary-teal); font-weight: 600;">Top 5%</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Maria Rodriguez</td>
+                                <td class="skill-cell">
+                                    <span>91%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 91%;"></div>
+                                    </div>
+                                </td>
+                                <td class="skill-cell">
+                                    <span>88%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 88%;"></div>
+                                    </div>
+                                </td>
+                                <td class="skill-cell">
+                                    <span>85%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 85%;"></div>
+                                    </div>
+                                </td>
+                                <td><strong>88%</strong></td>
+                                <td><span style="color: var(--primary-teal); font-weight: 600;">Top 3%</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">James Wilson</td>
+                                <td class="skill-cell">
+                                    <span>76%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 76%;"></div>
+                                    </div>
+                                </td>
+                                <td class="skill-cell">
+                                    <span>82%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 82%;"></div>
+                                    </div>
+                                </td>
+                                <td class="skill-cell">
+                                    <span>91%</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 91%;"></div>
+                                    </div>
+                                </td>
+                                <td><strong>83%</strong></td>
+                                <td><span style="color: var(--primary-blue); font-weight: 600;">Top 15%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Interface -->
+    <section id="assessment-interface" class="page">
+        <div class="container" style="padding: 40px 0;">
+            <div class="assessment-interface">
+                <div class="assessment-header">
+                    <div>
+                        <h2 style="margin-bottom: 5px;">Python Coding Challenge</h2>
+                        <p style="color: var(--gray-600);">Senior Developer Position - TechCorp Inc.</p>
+                    </div>
+                    <div class="timer">45:22</div>
+                </div>
+                
+                <div class="anti-cheat-banner">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Anti-cheat protection is active. Tab switching and copy-paste are monitored.</span>
+                </div>
+                
+                <div class="assessment-body">
+                    <div class="question-panel">
+                        <div class="question-number">Question 2 of 5</div>
+                        <h3 style="margin-bottom: 20px;">Find the Maximum Subarray Sum</h3>
+                        
+                        <div style="background-color: var(--gray-50); padding: 20px; border-radius: var(--radius); margin-bottom: 25px;">
+                            <p style="margin-bottom: 15px;"><strong>Problem Statement:</strong></p>
+                            <p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+                            
+                            <p style="margin: 15px 0;"><strong>Example:</strong></p>
+                            <p>Input: nums = [-2,1,-3,4,-1,2,1,-5,4]</p>
+                            <p>Output: 6</p>
+                            <p>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+                        </div>
+                        
+                        <div style="background-color: rgba(46, 196, 182, 0.1); padding: 16px; border-radius: var(--radius); border-left: 4px solid var(--primary-teal);">
+                            <p style="display: flex; align-items: flex-start; gap: 10px;">
+                                <i class="fas fa-lightbulb" style="color: var(--primary-teal); margin-top: 3px;"></i>
+                                <span>Think about a solution with O(n) time complexity. Consider using Kadane's algorithm.</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <div class="editor-language">Python 3</div>
+                            <div style="display: flex; gap: 15px;">
+                                <button style="background: none; border: none; color: #9ca3af; cursor: pointer;">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                                <button style="background: none; border: none; color: #9ca3af; cursor: pointer;">
+                                    <i class="fas fa-play"></i> Run Code
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-body">
+                            <pre style="color: #f3f4f6;">
+<span style="color: #fbbf24;">def</span> <span style="color: #34d399;">maxSubArray</span>(nums):
+    <span style="color: #fbbf24;">if</span> <span style="color: #34d399;">not</span> nums:
+        <span style="color: #fbbf24;">return</span> 0
+    
+    max_sum = nums[0]
+    current_sum = nums[0]
+    
+    <span style="color: #fbbf24;">for</span> num <span style="color: #fbbf24;">in</span> nums[1:]:
+        <span style="color: #60a5fa;"># Your code here</span>
+        
+    
+    <span style="color: #fbbf24;">return</span> max_sum</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="padding: 20px 32px; display: flex; justify-content: space-between; border-top: 1px solid var(--gray-200);">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous Question
+                    </button>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-code"></i>
+                            Test Code
+                        </button>
+                        <button class="btn btn-primary">
+                            Next Question
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Interview Page -->
+    <section id="ai-interview" class="page">
+        <div class="container" style="padding: 40px 0;">
+            <div class="dashboard-header" style="margin-bottom: 30px;">
+                <h1>AI-Powered Interview</h1>
+                <div>
+                    <button class="btn btn-outline" onclick="showPage('candidate-dashboard')">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
+            
+            <div class="interview-container">
+                <div class="video-panel card">
+                    <div class="video-header">
+                        <h3 style="color: white;">Technical Interview - Python Developer</h3>
+                        <div class="recording-indicator">
+                            <div class="recording-dot"></div>
+                            <span>Recording</span>
+                        </div>
+                    </div>
+                    
+                    <div class="video-feed">
+                        <div style="text-align: center;">
+                            <div style="width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, #333, #555); display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; border: 5px solid var(--primary-blue);">
+                                <i class="fas fa-user" style="font-size: 5rem; color: #ccc;"></i>
+                            </div>
+                            <h3 style="color: white; margin-bottom: 10px;">Alex Johnson</h3>
+                            <p style="color: var(--gray-400);">Python Developer Interview</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-controls">
+                        <button class="control-btn">
+                            <i class="fas fa-microphone-slash"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-video-slash"></i>
+                        </button>
+                        <button class="control-btn primary">
+                            <i class="fas fa-stop"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="questions-panel card">
+                    <div class="questions-header">
+                        <h3>AI-Generated Questions</h3>
+                        <p style="color: var(--gray-600); margin-top: 5px;">Questions adapt based on your responses</p>
+                    </div>
+                    
+                    <div class="questions-list">
+                        <div class="question-item active">
+                            <p><strong>Q1: </strong>Explain the difference between a list and a tuple in Python. When would you use each?</p>
+                            <p style="color: var(--primary-teal); margin-top: 10px; font-size: 0.9rem;">
+                                <i class="fas fa-check-circle"></i> Answered (Score: 9/10)
+                            </p>
+                        </div>
+                        
+                        <div class="question-item active">
+                            <p><strong>Q2: </strong>Describe a time you optimized a slow database query. What was your approach?</p>
+                            <p style="color: var(--primary-blue); margin-top: 10px; font-size: 0.9rem;">
+                                <i class="fas fa-microphone"></i> Currently answering
+                            </p>
+                        </div>
+                        
+                        <div class="question-item">
+                            <p><strong>Q3: </strong>How would you design a REST API for a ride-sharing service?</p>
+                            <p style="color: var(--gray-500); margin-top: 10px; font-size: 0.9rem;">
+                                <i class="fas fa-clock"></i> Upcoming
+                            </p>
+                        </div>
+                        
+                        <div class="question-item">
+                            <p><strong>Q4: </strong>Explain the concept of database indexing and when it's beneficial.</p>
+                            <p style="color: var(--gray-500); margin-top: 10px; font-size: 0.9rem;">
+                                <i class="fas fa-clock"></i> Upcoming
+                            </p>
+                        </div>
+                        
+                        <div class="question-item">
+                            <p><strong>Q5: </strong>How do you handle errors and exceptions in a Python web application?</p>
+                            <p style="color: var(--gray-500); margin-top: 10px; font-size: 0.9rem;">
+                                <i class="fas fa-clock"></i> Upcoming
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; display: flex; justify-content: center;">
+                <button class="btn btn-primary" style="padding: 15px 40px;">
+                    <i class="fas fa-robot"></i>
+                    Generate Next Question
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="color: white; margin-bottom: 20px;">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        EduHire
+                    </div>
+                    <p style="color: var(--gray-400); margin-bottom: 25px;">Hire for skills, not certificates. Connecting talent with opportunity through real-time assessments.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Candidates</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find Jobs</a></li>
+                        <li><a href="#">Skill Assessments</a></li>
+                        <li><a href="#">AI Interview Prep</a></li>
+                        <li><a href="#">Career Resources</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Recruiters</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Post a Job</a></li>
+                        <li><a href="#">Create Assessment</a></li>
+                        <li><a href="#">Candidate Search</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Recruiter Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 EduHire. All rights reserved. | <a href="#" style="color: var(--gray-400);">Privacy Policy</a> | <a href="#" style="color: var(--gray-400);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            const activePage = document.getElementById(pageId);
+            activePage.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            return false;
+        }
+        
+        // Role selection in authentication
+        function selectRole(role) {
+            const candidateOption = document.getElementById('candidate-option');
+            const recruiterOption = document.getElementById('recruiter-option');
+            const roleConfirm = document.getElementById('role-confirm');
+            const roleConfirmLabel = document.getElementById('role-confirm-label');
+            
+            if (role === 'candidate') {
+                candidateOption.classList.add('active');
+                recruiterOption.classList.remove('active');
+                roleConfirm.value = 'Candidate';
+                roleConfirmLabel.textContent = 'I am a Candidate';
+            } else {
+                recruiterOption.classList.add('active');
+                candidateOption.classList.remove('active');
+                roleConfirm.value = 'Recruiter';
+                roleConfirmLabel.textContent = 'I am a Recruiter';
+            }
+        }
+        
+        // Form submission
+        document.getElementById('auth-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const role = document.getElementById('role-confirm').value;
+            
+            if (role === 'Candidate') {
+                showPage('candidate-dashboard');
+            } else if (role === 'Recruiter') {
+                showPage('recruiter-dashboard');
+            }
+        });
+        
+        // Initialize with landing page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover animations
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Set initial role selection
+            selectRole('candidate');
+        });
+        
+        // Timer for assessment interface
+        let timerSeconds = 45 * 60 + 22; // 45 minutes, 22 seconds
+        const timerElement = document.querySelector('.timer');
+        
+        function updateTimer() {
+            if (!timerElement) return;
+            
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timerSeconds > 0) {
+                timerSeconds--;
+            }
+        }
+        
+        // Update timer every second if on assessment page
+        setInterval(function() {
+            if (document.getElementById('assessment-interface').classList.contains('active')) {
+                updateTimer();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
