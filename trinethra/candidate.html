@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Portal | Trinethra</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">Trinethra<span style="color:var(--color-primary)">.</span></div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">My Stats</a>
+                <a href="#" class="nav-item">Match Requests</a>
+                <div style="flex-grow: 1"></div>
+                <!-- Logout is now handled via main.js global logic or inline call -->
+                <button id="logoutBtn" class="nav-item" style="text-align: left">Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="welcome-header">
+                <h1>Welcome, <span id="userDisplay" class="text-gradient">Unknown</span></h1>
+                <p style="color: var(--text-muted)">Your current skill ranking puts you in the top 15%</p>
+            </header>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Global Skill Rating</div>
+                    <div class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Assessments Passed</div>
+                    <div class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Companies Interested</div>
+                    <div class="stat-value">0</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: var(--space-md)">Available Challenges</h2>
+
+            <div class="assessment-list">
+                <div class="assessment-card">
+                    <div>
+                        <div style="font-weight: 600; font-size: 1.1rem">Algorithm Optimization II</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem">Optimize a sorting algorithm for large
+                            datasets.</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem">
+                        <span class="tag hard">Hard</span>
+                        <button class="btn btn-ghost" style="padding: 0.5rem 1rem"
+                            onclick="window.location.href='assessment.html'">Start</button>
+                    </div>
+                </div>
+
+                <div class="assessment-card">
+                    <div>
+                        <div style="font-weight: 600; font-size: 1.1rem">React Component State</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem">Fix the re-rendering issue in this
+                            hook.</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem">
+                        <span class="tag medium">Medium</span>
+                        <button class="btn btn-ghost" style="padding: 0.5rem 1rem"
+                            onclick="window.location.href='assessment.html'">Start</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check Auth
+        const user = AppState.user;
+        if (!user || user.role !== 'candidate') {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('userDisplay').textContent = user.name;
+        }
+
+        // Logout Handler
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            AppState.logout();
+        });
+    </script>
+</body>
+
+</html>

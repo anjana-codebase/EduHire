@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiter Portal | Trinethra</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <style>
+        .filter-bar {
+            background: var(--bg-surface);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .toggle-track {
+            width: 40px;
+            height: 20px;
+            background: #333;
+            border-radius: 20px;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .toggle-thumb {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        .active .toggle-track {
+            background: var(--color-primary);
+        }
+
+        .active .toggle-thumb {
+            transform: translateX(20px);
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid #333;
+            background: var(--bg-app);
+            color: white;
+            font-family: inherit;
+        }
+
+        .candidate-card {
+            background: var(--bg-surface);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+
+        .candidate-card:hover {
+            border-color: var(--color-primary);
+        }
+
+        .score-badge {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+        }
+
+        .create-job-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--bg-surface-glass);
+            backdrop-filter: blur(20px);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-primary);
+            z-index: 2000;
+            display: none;
+        }
+
+        .create-job-modal.visible {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">Trinethra<span style="color:var(--color-primary)">.</span></div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">Talent Search</a>
+                <a href="#" class="nav-item">My Jobs & Exams</a>
+                <a href="#" class="nav-item">Analytics</a>
+                <div style="flex-grow: 1"></div>
+                <button id="logoutBtn" class="nav-item" style="text-align: left">Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
+                <h1 class="text-gradient">Find Top Performers</h1>
+                <button class="btn btn-primary" onclick="showJobModal()">+ New Assessment</button>
+            </header>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <input type="text" class="search-input"
+                    placeholder="Search by skill (e.g. 'Python', 'React', 'System Design')...">
+
+                <div class="toggle-switch" id="antiCertToggle" onclick="toggleAntiCert()">
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                    <span style="font-size: 0.9rem; font-weight: 600;">Anti-Certificate Mode</span>
+                </div>
+            </div>
+
+            <!-- Candidate List -->
+            <div id="candidateList">
+                <!-- Populated by JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Assessment Modal (AI Powered) -->
+    <div id="jobModal" class="create-job-modal">
+        <h2 style="margin-bottom: var(--space-md)">AI Job Assessment Builder</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-md);">
+            Paste a job description and our AI will generate a relevant 20-minute technical screening quiz.
+        </p>
+        <textarea
+            style="width: 100%; height: 150px; background: var(--bg-app); border: 1px solid #333; color: white; padding: 1rem; border-radius: var(--radius-sm); margin-bottom: var(--space-md);"
+            placeholder="Paste Job Description here..."></textarea>
+
+        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+            <button class="btn btn-ghost" onclick="hideJobModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="generateQuiz()">Generate Quiz (AI)</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Auth Check
+        const user = AppState.user;
+        if (!user || user.role !== 'recruiter') {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', () => AppState.logout());
+
+        // Mock Data for Candidates
+        const mockCandidates = [
+            { name: "Dev_X99", skills: ["Python", "Django"], score: 98, education: "Self-Taught" },
+            { name: "AlgoMaster", skills: ["C++", "Algorithms"], score: 95, education: "IIT Bombay" },
+            { name: "ReactNinja", skills: ["React", "TypeScript"], score: 92, education: "B.Sc Comp Sci" },
+            { name: "CloudArch", skills: ["AWS", "Terraform"], score: 88, education: "Bootcamp Grad" },
+        ];
+
+        const candidateList = document.getElementById('candidateList');
+        const antiCertToggle = document.getElementById('antiCertToggle');
+        let antiCertMode = false;
+
+        function renderList() {
+            candidateList.innerHTML = mockCandidates.map(c => `
+                <div class="candidate-card">
+                    <div>
+                        <div style="font-size: 1.25rem; font-weight: 600;">${c.name}</div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">
+                            ${c.skills.join(' • ')}
+                            ${!antiCertMode ? `• <span style="color: var(--text-dim)">${c.education}</span>` : ''}
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="score-badge">${c.score}%</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Skill Score</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleAntiCert() {
+            antiCertMode = !antiCertMode;
+            antiCertToggle.classList.toggle('active');
+            renderList();
+        }
+
+        function showJobModal() { document.getElementById('jobModal').classList.add('visible'); }
+        function hideJobModal() { document.getElementById('jobModal').classList.remove('visible'); }
+
+        function generateQuiz() {
+            const btn = document.querySelector('#jobModal .btn-primary');
+            const originalText = btn.textContent;
+            btn.textContent = "Analyzing JD...";
+            setTimeout(() => {
+                btn.textContent = "Generating Questions...";
+                setTimeout(() => {
+                    alert("Assessment Created! (Mock AI: Generated 5 Python questions and 3 System Design scenarios)");
+                    hideJobModal();
+                    btn.textContent = originalText;
+                }, 1500);
+            }, 1000);
+        }
+
+        // Initial Render
+        renderList();
+    </script>
+</body>
+
+</html>

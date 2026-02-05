@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinethra | Meritocratic Hiring</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        /* Landing Page Specific Styles */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vh;
+            height: 60vh;
+            background: radial-gradient(circle, var(--color-primary-glow), transparent 70%);
+            opacity: 0.3;
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: var(--space-xs);
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: var(--space-xl);
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .persona-card {
+            padding: var(--space-lg);
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .persona-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+        }
+
+        .persona-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-secondary);
+            margin-bottom: var(--space-sm);
+            display: block;
+            font-weight: 700;
+        }
+
+        .persona-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+        }
+
+        .persona-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        nav {
+            padding: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.05em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">Trinethra<span style="color:var(--color-primary)">.</span></div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="login.html" class="btn btn-ghost" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Log In</a>
+                <a href="admin.html" class="btn btn-ghost" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Admin
+                    Access</a>
+            </div>
+        </nav>
+
+        <main class="hero">
+            <h1>Edu Hire</h1>
+            <h3>Skills Speak Louder<br><span class="text-gradient">Than Degrees.</span></h3>
+            <p>The first hiring ecosystem where your code proves your worth. No resumes. No bias. Just pure performance.
+            </p>
+
+            <div class="persona-grid">
+                <a href="candidate.html" class="glass-panel persona-card">
+                    <span class="persona-tag">For Students & Job Seekers</span>
+                    <div class="persona-title">Enter the Arena</div>
+                    <div class="persona-desc">Take real-time skill assessments and get matched with top tech companies
+                        based on your score.</div>
+                </a>
+
+                <a href="recruiter.html" class="glass-panel persona-card">
+                    <span class="persona-tag">For Companies</span>
+                    <div class="persona-title">Hire Talent, Not Paper</div>
+                    <div class="persona-desc">Access a pre-vetted pool of developers ranked by actual coding
+                        performance, not university names.</div>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
