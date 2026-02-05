@@ -1,0 +1,48 @@
+:root {
+    /* Color Palette - Premium Dark Mode "Obsidian & Neon" */
+    --hue-primary: 250; /* Deep Violet/Blue */
+    --hue-secondary: 180; /* Cyan/Teal */
+    --hue-accent: 320; /* Magenta */
+
+    /* Backgrounds */
+    --bg-app: hsl(220, 20%, 8%); /* Very dark slate */
+    --bg-surface: hsl(220, 15%, 12%);
+    --bg-surface-glass: hsla(220, 15%, 12%, 0.7);
+    --bg-highlight: hsl(220, 15%, 16%);
+
+    /* Primary Brand Colors */
+    --color-primary: hsl(var(--hue-primary), 80%, 65%);
+    --color-primary-glow: hsla(var(--hue-primary), 80%, 65%, 0.4);
+    --color-secondary: hsl(var(--hue-secondary), 70%, 55%);
+    
+    /* Text */
+    --text-main: hsl(0, 0%, 98%);
+    --text-muted: hsl(220, 10%, 70%);
+    --text-dim: hsl(220, 10%, 45%);
+
+    /* Status */
+    --success: hsl(150, 60%, 45%);
+    --error: hsl(0, 70%, 60%);
+    --warning: hsl(35, 90%, 60%);
+
+    /* Spacing & Layout */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+
+    /* Effects */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px var(--color-primary-glow);
+    --backdrop-blur: blur(12px);
+    
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}

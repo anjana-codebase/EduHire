@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Edu Hire</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(100, 50, 255, 0.1), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(50, 200, 200, 0.1), transparent 40%),
+                var(--bg-app);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: var(--space-xl);
+            text-align: center;
+        }
+
+        .role-switch {
+            display: flex;
+            background: var(--bg-surface);
+            padding: 4px;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-lg);
+            border: 1px solid hsla(0, 0%, 100%, 0.1);
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .role-btn.active {
+            background: var(--bg-highlight);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0.75rem;
+            margin-bottom: var(--space-sm);
+            background: var(--bg-surface);
+            border: 1px solid hsla(0, 0%, 100%, 0.1);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--bg-highlight);
+            border-color: var(--text-muted);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin: var(--space-md) 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--text-dim);
+            opacity: 0.3;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: var(--space-md);
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-app);
+            border: 1px solid hsla(0, 0%, 100%, 0.1);
+            border-radius: var(--radius-sm);
+            color: white;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px var(--color-primary-glow);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container glass-panel">
+        <h2 style="margin-bottom: var(--space-xs)">Welcome Back</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-lg)">Sign in to access the ecosystem</p>
+
+        <!-- Role Toggle -->
+        <div class="role-switch">
+            <button class="role-btn active" onclick="setRole('candidate')">Candidate</button>
+            <button class="role-btn" onclick="setRole('recruiter')">Recruiter</button>
+        </div>
+
+        <div id="candidateSocials">
+            <button class="social-btn">
+                <img src="https://simpleicons.org/icons/github.svg" width="20" style="filter: invert(1)">
+                Continue with GitHub
+            </button>
+            <button class="social-btn">
+                <img src="https://simpleicons.org/icons/linkedin.svg" width="20" style="filter: invert(1)">
+                Continue with LinkedIn
+            </button>
+            <div class="divider">OR</div>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label>Email / Handle</label>
+                <input type="text" id="username" placeholder="e.g. dev_wizard" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Sign In</button>
+        </form>
+
+        <p style="margin-top: var(--space-md); font-size: 0.9rem; color: var(--text-muted)">
+            Don't have an account? <a href="#" style="color: var(--color-primary)">Sign up</a>
+        </p>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        let currentRole = 'candidate';
+
+        function setRole(role) {
+            currentRole = role;
+            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Toggle Socials visibility (Recruiters might use business email mostly)
+            const socials = document.getElementById('candidateSocials');
+            if (role === 'recruiter') {
+                socials.style.display = 'none';
+            } else {
+                socials.style.display = 'block';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+
+            // Use the shared AppState helper
+            AppState.login(currentRole, username);
+
+            // Redirect logic
+            if (currentRole === 'candidate') {
+                window.location.href = 'candidate.html';
+            } else {
+                window.location.href = 'recruiter.html';
+            }
+        }
+    </script>
+</body>
+
+</html>
